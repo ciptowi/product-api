@@ -1,0 +1,35 @@
+@startuml desain sistem
+'!theme toy
+'left to right direction
+top to bottom direction
+
+title Design Security Sistem
+
+rectangle "Mobile Client" as client #B4A7E5
+
+rectangle "API Gateway" #FFFFFF {
+	agent "Rate Limiting" as rate #FFF000
+	agent "Auth" as auth #FFF000
+	agent "Authorization" as authz #FFF000
+	agent "Routing" as route #FFF000
+}
+
+rectangle #E4FFB6 {
+	agent "User Service" as SA #03FEA4
+	agent "Product Service" as SB #03FEA4
+	agent "Order Service" as SC #03FEA4
+	agent "Deliver Service" as SD #03FEA4
+	agent "Payment Service" as SE #03FEA4
+}
+
+client --> rate 
+rate --> auth
+auth --> authz
+authz --> route
+route --> SA
+route --> SB
+route --> SC
+route --> SD
+route --> SE
+
+@enduml
